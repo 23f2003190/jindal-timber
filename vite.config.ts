@@ -11,6 +11,8 @@ export default defineConfig({
   // Browser errors stay in the trusted parent-frame console-log flow;
   // do not expose the bridge collector on the public sandbox tunnel.
   devServerBridge: { errorCollector: false },
+  // Force the Nitro/server build to run outside the GHL sandbox and target Vercel's serverless output.
+  nitro: { preset: "vercel" },
   // Do not set server.hmr.timeout — Vite 8 deprecated those websocket fields
   // (use server.ws.*). Overlay/host/port are package-owned; default WS timeout is 30s.
   tanstackStart: {
